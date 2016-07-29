@@ -19,7 +19,7 @@ def _get_tweets(db_path="tweets.json"):
                 TWEETS = json.load(f)
         # Fall back to reading from the API, but caching to a file.
         else:
-            from trump import tweets
+            from thedonald import tweets
             TWEETS = tweets.write_tweets_to_file(db_path)
 
     # Return from cache

@@ -4,7 +4,7 @@ import re
 
 import tweepy as t
 
-from trump.auth import api
+from thedonald.auth import api
 
 
 def _process_text(text):
