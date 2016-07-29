@@ -1,4 +1,4 @@
-from TrumpText import generate
+from trump import generate
 
 if __name__ == "__main__":
     while 1:

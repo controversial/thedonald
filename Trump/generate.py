@@ -4,7 +4,7 @@ import json
 import os
 import random
 
-from TrumpText import tweets
+from trump import tweets
 
 
 TWEETS = None
@@ -41,22 +41,37 @@ def _next_word_choices(search):
 
 
 def random_word():
+    """Get a random word from one of Trump's tweets."""
     return random.choice(" ".join(_get_tweets()).split())
 
 
 def random_starting_word():
+    """Get a random word to start a sentence."""
     return random.choice([t.split()[0] for t in _get_tweets()])
 
 
 def next_word(word):
     """Choose a word to succeed a given word based on what Trump would put
     there."""
-    return random.choice(_next_word_choices(word))
+    choices = _next_word_choices(word)
+    if choices:
+        return random.choice(_next_word_choices(word))
+    else:
+        return False
 
 
 def sentence():
     """Generate a random sentence using a Markov chain on Trump's tweets."""
     out = [random_starting_word()]
     while not out[-1][-1] in ".!?":
-        out.append(next_word(out[-1]))
+        nxt = next_word(out[-1])
+        if nxt:
+            out.append(nxt)
+        else:
+            # If no words follow it, just stop there.
+            break
     return " ".join(out)
+
+
+def generate():
+    return " ".join([sentence() for _ in range(random.randint(1, 3))])
