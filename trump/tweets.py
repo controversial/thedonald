@@ -10,7 +10,7 @@ from trump.auth import api
 def _process_text(text):
     """Remove URLs from text."""
     # Matches 'http' and any characters following until the next whitespace
-    return re.sub(r"http\S+", "", text)
+    return re.sub(r"http\S+", "", text).strip()
 
 
 def get_tweets(pages=1):
@@ -22,7 +22,7 @@ def get_tweets(pages=1):
         count=200
     ).pages(pages):
         for tweet in page:
-            tweets.append(tweet.text)
+            tweets.append(_process_text(tweet.text))
     return tweets
 
 
