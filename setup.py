@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="thedonald",
-    version="1.0.0",
+    version="1.0.1",
     description=("A Markov text generator generating fake Trump quotes from"
                  " Trump's tweets."),
     author="Luke Taylor",
