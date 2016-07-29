@@ -2,7 +2,8 @@ from setuptools import setup
 
 setup(
     name="thedonald",
-    version="1.0.1",
+    packages=["thedonald"],
+    version="1.0.4",
     description=("A Markov text generator generating fake Trump quotes from"
                  " Trump's tweets."),
     author="Luke Taylor",
