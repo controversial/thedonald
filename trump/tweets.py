@@ -23,7 +23,7 @@ def get_tweets(pages=1):
     ).pages(pages):
         for tweet in page:
             tweets.append(_process_text(tweet.text))
-    return tweets
+    return [i for i in tweets if i]
 
 
 def write_tweets_to_file(path="tweets.json", pages=1):
